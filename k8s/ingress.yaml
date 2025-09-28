@@ -12,14 +12,14 @@ spec:
       http:
         paths:
           - path: /sub1(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: test-app-service
                 port:
                   number: 80
           - path: /sub2(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: nginx-service
