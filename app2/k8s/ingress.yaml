@@ -1,0 +1,27 @@
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 # For path rewriting
+spec:
+  rules:
+    - host: api.127.0.0.1.nip.io # Replace with your domain or leave out for IP-based access
+      http:
+        paths:
+          - path: /app1(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: test-app-service
+                port:
+                  number: 80
+          - path: /app2(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 80
