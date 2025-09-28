@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-custom-content
+  namespace: test-app-subs
 data:
   index.html: |
     <!DOCTYPE html>
